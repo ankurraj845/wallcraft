@@ -58,6 +58,17 @@ class _WallpaperState extends State<Wallpaper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        elevation: 4,
+        title: Container(
+            child: Text('WallCraft',
+            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
+          centerTitle: true,
+          leading: Icon(Icons.cloud),
+
+
+      ),
       body: Column(
         children: [
           Expanded(
@@ -77,7 +88,26 @@ class _WallpaperState extends State<Wallpaper> {
                         )));
                       },
                       child: Container(
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 1,
+                          ),
+                          boxShadow: [
+                          const BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(
+                            5.0,
+                            5.0,
+                          ),
+                          blurRadius: 10.0,
+                          spreadRadius: 2.0,
+                        ),
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+
                         child: Image.network(
                           images[index]['src']['large2x'],
                           fit: BoxFit.cover,
@@ -92,12 +122,12 @@ class _WallpaperState extends State<Wallpaper> {
               loadmore();
             },
             child: Container(
-              height: 60,
+              height: 55,
               width: double.infinity,
-              color: Colors.black,
+              color: Colors.blueGrey,
               child: Center(
                 child: Text('Load More',
-                    style: TextStyle(fontSize: 20, color: Colors.white)),
+                    style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)),
               ),
             ),
           ),
