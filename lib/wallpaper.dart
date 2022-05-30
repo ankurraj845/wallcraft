@@ -101,7 +101,7 @@ class _WallpaperState extends State<Wallpaper> {
                             5.0,
                           ),
                           blurRadius: 10.0,
-                          spreadRadius: 2.0,
+                          spreadRadius: 1.0,
                         ),
                           ],
                           color: Colors.white,
