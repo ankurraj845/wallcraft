@@ -1,11 +1,11 @@
-
 import 'dart:convert';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:fullscreen/fullscreen.dart';
 
 import 'fullscreen.dart';
-
 
 class Wallpaper extends StatefulWidget {
   const Wallpaper({Key? key}) : super(key: key);
@@ -58,16 +58,18 @@ class _WallpaperState extends State<Wallpaper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.red,
         elevation: 4,
         title: Container(
             child: Text('WallCraft',
-            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)),
-          centerTitle: true,
-          leading: Icon(Icons.cloud),
-
-
+                style: GoogleFonts.rokkitt(
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 24))),
+        centerTitle: true,
+        leading: Icon(Icons.cloud_done),
       ),
       body: Column(
         children: [
@@ -80,34 +82,37 @@ class _WallpaperState extends State<Wallpaper> {
                       crossAxisCount: 3,
                       childAspectRatio: 2 / 3,
                       mainAxisSpacing: 2),
+
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> FullScreen(
-                          imageurl: images[index]['src']['large2x'],
-                        )));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FullScreen(
+                                      imageurl: images[index]['src']['large2x'],
+                                    )));
                       },
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.grey,
-                            width: 1,
+                            color: Colors.black,
+                            width: 1.3,
                           ),
                           boxShadow: [
-                          const BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(
-                            5.0,
-                            5.0,
-                          ),
-                          blurRadius: 10.0,
-                          spreadRadius: 1.0,
-                        ),
+                            const BoxShadow(
+                              color: Colors.black12,
+                              offset: Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 10.0,
+                              spreadRadius: 1.0,
+                            ),
                           ],
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(8),
                         ),
-
                         child: Image.network(
                           images[index]['src']['large2x'],
                           fit: BoxFit.cover,
@@ -117,17 +122,38 @@ class _WallpaperState extends State<Wallpaper> {
                   }),
             ),
           ),
-          InkWell(
-            onTap: () {
-              loadmore();
-            },
-            child: Container(
-              height: 55,
-              width: double.infinity,
-              color: Colors.blueGrey,
-              child: Center(
-                child: Text('Load More',
-                    style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)),
+          Container(
+            decoration: BoxDecoration(
+
+              border: Border.all(color: Colors.white,width: 2),
+              borderRadius: BorderRadius.circular(8)
+            ),
+            child: InkWell(
+              onTap: ()  {
+                loadmore();
+                ScaffoldMessenger.of(context).showSnackBar( const SnackBar(
+                    content: Text('loading...')),
+
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: Colors.red[700],
+
+                ),
+
+                height: 55,
+                width: double.infinity,
+                child: Center(
+                  child: Text('Load More',
+                      style: GoogleFonts.rokkitt(
+                        fontSize: 21,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      )),
+                ),
               ),
             ),
           ),

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 // import 'package:wallpaper_manager/wallpaper_manager.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:wallpaper_manager_flutter/wallpaper_manager_flutter.dart';
 
 
@@ -60,12 +61,20 @@ class _FullScreenState extends State<FullScreen> {
               setwallpaper();
             },
             child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.red[800],
+                border: Border.all(
+                  color: Colors.white,
+                  width: 1.2,
+                )
+              ),
               height: 60,
               width: double.infinity,
-              color: Colors.black,
+
               child: Center(
                 child: Text('Set Wallpaper',
-                    style: TextStyle(fontSize: 20, color: Colors.white)),
+                    style: GoogleFonts.rokkitt(fontStyle: FontStyle.italic,fontWeight: FontWeight.bold,fontSize: 24, color: Colors.white)),
               ),
             ),
           ),
